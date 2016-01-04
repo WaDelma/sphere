@@ -19,7 +19,7 @@ fn volume_of_1_sphere_works() {
         let expected = PI * radius.powi(2);
         let actual = sphere_volume(radius, 2);
         let diff = (expected - actual).abs();
-        let delta = 10f64.powi(-5);
+        let delta = 0.0001;
         assert!(diff < delta, "Expected: {}, Actual: {}, Difference {:e} >= {:e}", expected, actual, diff, delta);
     }
 }
@@ -30,7 +30,7 @@ fn volume_of_2_sphere_works() {
         let expected = (4. / 3.) * PI * radius.powi(3);
         let actual = sphere_volume(radius, 3);
         let diff = f64::abs_sub(expected, actual);
-        let delta = 10f64.powi(-5);
+        let delta = 0.0001;
         assert!(diff < delta, "Expected: {}, Actual: {}, Difference {:e} >= {:e}", expected, actual, diff, delta);
     }
 }
@@ -41,7 +41,7 @@ fn volume_of_3_sphere_works() {
         let expected = (1. / 2.) * PI.powi(2) * radius.powi(4);
         let actual = sphere_volume(radius, 4);
         let diff = f64::abs_sub(expected, actual);
-        let delta = 10f64.powi(-5);
+        let delta = 0.0001;
         assert!(diff < delta, "Expected: {}, Actual: {}, Difference {:e} >= {:e}", expected, actual, diff, delta);
     }
 }
