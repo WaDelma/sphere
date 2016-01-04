@@ -15,28 +15,28 @@ pub fn sphere_volume(radius: f64, dim: u64) -> f64 {
 
 #[test]
 fn volume_of_1_sphere_works() {
-    for radius in (0..1000000).map(|n| n as f64 / 1000.) {
+    for radius in (0..5000000).map(|n| n as f64 / 7000.) {
         let expected = PI * radius.powi(2);
         let actual = sphere_volume(radius, 2);
-        assert!(equals(expected, actual, 0.0001, 10), "Expected: {}, Actual: {}", expected, actual);
+        assert!(equals(expected, actual, 0.0001, 5), "Expected: {}, Actual: {}", expected, actual);
     }
 }
 
 #[test]
 fn volume_of_2_sphere_works() {
-    for radius in (0..1000000).map(|n| n as f64 / 1000.) {
+    for radius in (0..5000000).map(|n| n as f64 / 7000.) {
         let expected = (4. / 3.) * PI * radius.powi(3);
         let actual = sphere_volume(radius, 3);
-        assert!(equals(expected, actual, 0.0001, 10), "Expected: {}, Actual: {}", expected, actual);
+        assert!(equals(expected, actual, 0.0001, 5), "Expected: {}, Actual: {}", expected, actual);
     }
 }
 
 #[test]
 fn volume_of_3_sphere_works() {
-    for radius in (0..1000000).map(|n| n as f64 / 1000.) {
+    for radius in (0..5000000).map(|n| n as f64 / 7000.) {
         let expected = (1. / 2.) * PI.powi(2) * radius.powi(4);
         let actual = sphere_volume(radius, 4);
-        assert!(equals(expected, actual, 0.0001, 10), "Expected: {}, Actual: {}", expected, actual);
+        assert!(equals(expected, actual, 0.0001, 5), "Expected: {}, Actual: {}", expected, actual);
     }
 }
 
