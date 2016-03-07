@@ -1,9 +1,12 @@
 [package]
 name = "sphere"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["WaDelma <>"]
 description = "Function for calculating volume of n-sphere."
 repository = "https://github.com/WaDelma/sphere"
 readme = "README.md"
 keywords = [ "circle", "sphere", "n-sphere", "volume"]
 license = "MIT"
+
+[dependencies]
+num = "0.1.31"

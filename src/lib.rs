@@ -1,16 +1,29 @@
+extern crate num;
+use num::Float;
+
 use std::f64::consts::PI;
 
 /// Calculates the volume of the n-sphere.
-pub fn sphere_volume(radius: f64, dim: u64) -> f64 {
+pub fn sphere_volume<F: Float>(radius: F, dim: u64) -> F {
+    let pi = F::from(PI)
+        .expect("Casting PI should be valid.");
     let gamma = if dim % 2 == 0 {
         // This works because dim / 2 is a whole number.
-        fact(dim / 2) as f64
+        F::from(fact(dim / 2))
+            .expect("Casting result of factorial should be always castable as Float.")
     } else {
         // This works because the function is gamma(1/2 + n) where n = dim / 2 + 1
         let n = dim / 2 + 1;
-        (fact(2 * n) as f64 / (4u64.pow(n as u32) * fact(n)) as f64) * PI.sqrt()
+        let fact_2n = F::from(fact(2 * n))
+            .expect("Casting result of factorial should be always castable as Float.");
+        let div = F::from(4u64.pow(n as u32) * fact(n))
+            .expect("Casting result of factorial should be always castable as Float.");
+        (fact_2n / div) * pi.sqrt()
     };
-    (PI.powf(0.5 * dim as f64) * radius.powf(dim as f64)) / gamma
+    let dim = F::from(dim)
+        .expect("u64 should be always castable as Float.");
+    let half = F::one() / (F::one() + F::one());
+    (pi.powf(half * dim) * radius.powf(dim)) / gamma
 }
 
 #[test]
