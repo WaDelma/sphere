@@ -1,5 +1,5 @@
-extern crate num;
-use num::Float;
+extern crate num_traits;
+use num_traits::Float;
 
 const TAU: f64 = 2. * std::f64::consts::PI;
 const LAMBDA: f64 = TAU / 4.;
